@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TicTacToe</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 90px);
+      grid-gap: 0;
+    }
+    .grid span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 90px;
+      border: 1px solid black;
+      box-sizing: border-box;
+      cursor: pointer;
+      font-size: 80px;
+      padding-bottom: 15px;
+    }
+    .input {
+      display: flex;
+      align-items: center;
+    }
+    #heading {
+      display: flex;
+      font-size: 5vw;
+      top: 10px;
+    }
+  </style>
+  <script>
+    let lastMark = '';
+    let num = 0;
+    function toggleMark() {
+      const element = event.target;
+      if (element.innerHTML == '') {
+        num += 1;
+        if (lastMark === '') {
+          lastMark = 'o'
+          element.innerHTML = 'o'
+        } else if(lastMark == 'o') {
+          lastMark = 'x'
+          element.innerHTML = 'x'
+        } else if(lastMark == 'x') {
+          lastMark = 'o'
+          element.innerHTML = 'o'
+        }
+      }
+      checkWinner()
+      if (num == 9 && document.getElementById('winner').innerHTML == '') {
+        const cells = document.querySelectorAll('.grid span');
+        cells.forEach(cell => {
+          cell.style.color = 'red';
+        });
+        printWinner('Draw', 'red');
+      }
+    }
+    
+    function checkWinner() {
+      winCombo = ['123', '456', '789', '147', '258', '369', '159', '357']
+      for (item of winCombo) {
+        if(getValue(item[0]) === 'x' && getValue(item[1]) === 'x' && getValue(item[2]) === 'x'){
+          printWinner('X', 'green')
+          changeColor(item);
+        }
+        if(getValue(item[0]) === 'o' && getValue(item[1]) === 'o' && getValue(item[2]) === 'o'){
+          printWinner('O', 'green')
+          changeColor(item);
+        }
+      }
+    }
+
+    function changeColor(items) {
+      for (item of items) {
+        document.getElementById(item).style.color = 'green'
+      }
+    }
+    
+    function getValue(id) {
+      return document.getElementById(id).innerHTML
+    }
+    
+    function printWinner(mark, color) {
+      document.getElementById('winner').innerHTML = (mark === 'X' || mark === 'O' ) ? `${mark} is winner` : 'Draw!, Please Restart';
+      document.getElementById('winner').style.color = color;
+      document.getElementById('btn').style.display = 'block';
+      disableAllClicks();
+    }
+
+    function disableAllClicks() {
+      const cells = document.querySelectorAll('.grid span');
+      cells.forEach(cell => {
+        cell.onclick = null;
+      });
+    }
+  </script>
+</head>
+<body>
+  <div id="heading">Tic Tac Toe</div>
+  <div class="grid">
+    <span id="1" onclick=toggleMark() ></span>
+    <span id="2" onclick=toggleMark() ></span>
+    <span id="3" onclick=toggleMark() ></span>
+    <span id="4" onclick=toggleMark() ></span>
+    <span id="5" onclick=toggleMark() ></span>
+    <span id="6" onclick=toggleMark() ></span>
+    <span id="7" onclick=toggleMark() ></span>
+    <span id="8" onclick=toggleMark() ></span>
+    <span id="9" onclick=toggleMark() ></span>
+  </div>
+  <h1 id="winner"></h1>
+  <button id="btn" onclick="location.reload()" style='display: none;' />Restart</button>
+</body>
+</html>
