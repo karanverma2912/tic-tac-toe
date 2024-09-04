@@ -21,8 +21,8 @@ body {
     border: 1px solid black;
     box-sizing: border-box;
     cursor: pointer;
-    font-size: 80px;
-    padding-bottom: 15px;
+    font-size: 62px;
+    padding-bottom: 16px;
 }
 .input {
     display: flex;
