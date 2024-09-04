@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="game.css">
+  <script src="game.js"></script>
+  <title>TicTacToe</title>
+</head>
+<body>
+  <div id="heading">Tic Tac Toe</div>
+  <div class="grid">
+    <span id="1" onclick=toggleMark() ></span>
+    <span id="2" onclick=toggleMark() ></span>
+    <span id="3" onclick=toggleMark() ></span>
+    <span id="4" onclick=toggleMark() ></span>
+    <span id="5" onclick=toggleMark() ></span>
+    <span id="6" onclick=toggleMark() ></span>
+    <span id="7" onclick=toggleMark() ></span>
+    <span id="8" onclick=toggleMark() ></span>
+    <span id="9" onclick=toggleMark() ></span>
+  </div>
+  <h1 id="winner"></h1>
+  <button id="btn" onclick="location.reload()" style='display: none;' />Restart</button>
+</body>
+</html>
