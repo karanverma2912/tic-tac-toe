@@ -2,8 +2,10 @@
   --bg-color: #121212;
   --grid-bg: #1e1e1e;
   --text-color: #ffffff;
-  --primary-color: #00e5ff; /* Cyan for X */
-  --secondary-color: #ff4081; /* Pink for O */
+  --primary-color: #00e5ff;
+  /* Cyan for X */
+  --secondary-color: #ff4081;
+  /* Pink for O */
   --accent-color: #6200ea;
   --cell-size: 100px;
   --gap-size: 10px;
@@ -22,6 +24,8 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  /* Remove blue tap highlight on mobile */
 }
 
 .container {
@@ -64,8 +68,13 @@ body {
   transition: transform 0.2s;
 }
 
-.player-x .score { color: var(--primary-color); }
-.player-o .score { color: var(--secondary-color); }
+.player-x .score {
+  color: var(--primary-color);
+}
+
+.player-o .score {
+  color: var(--secondary-color);
+}
 
 .score {
   font-size: 2rem;
@@ -84,7 +93,8 @@ body {
   grid-template-columns: repeat(3, var(--cell-size));
   grid-template-rows: repeat(3, var(--cell-size));
   gap: var(--gap-size);
-  background-color: var(--grid-bg); /* This acts as border if we use gaps properly, but let's reset */
+  background-color: var(--grid-bg);
+  /* This acts as border if we use gaps properly, but let's reset */
   background: transparent;
   margin-bottom: 30px;
   position: relative;
@@ -100,8 +110,8 @@ body {
   align-items: center;
   font-size: 4rem;
   cursor: pointer;
-  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3), 
-              inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.05);
   transition: all 0.2s ease;
   user-select: none;
 }
