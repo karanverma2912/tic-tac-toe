@@ -4,23 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="game.css">
-  <script src="game.js"></script>
-  <title>TicTacToe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <title>Tic Tac Toe | Next Level</title>
 </head>
 <body>
-  <div id="heading">Tic Tac Toe</div>
-  <div class="grid">
-    <span id="1" onclick=toggleMark() ></span>
-    <span id="2" onclick=toggleMark() ></span>
-    <span id="3" onclick=toggleMark() ></span>
-    <span id="4" onclick=toggleMark() ></span>
-    <span id="5" onclick=toggleMark() ></span>
-    <span id="6" onclick=toggleMark() ></span>
-    <span id="7" onclick=toggleMark() ></span>
-    <span id="8" onclick=toggleMark() ></span>
-    <span id="9" onclick=toggleMark() ></span>
+  <div class="container">
+    <header class="game-header">
+      <h1 class="title">Tic Tac Toe</h1>
+      <div class="scoreboard">
+        <div class="score-box player-x">
+          <span class="player-name">Player X</span>
+          <span class="score" id="score-x">0</span>
+        </div>
+        <div class="score-box player-o">
+          <span class="player-name">Player O</span>
+          <span class="score" id="score-o">0</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="game-area">
+      <div class="status-indicator" id="status">X's Turn</div>
+      <div class="grid" id="grid">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+    </main>
+
+    <footer class="game-controls">
+      <button id="restart-btn" class="btn">Restart Game</button>
+    </footer>
   </div>
-  <h1 id="winner"></h1>
-  <button id="btn" onclick="location.reload()" style='display: none;' />Restart</button>
+
+  <!-- Modal for Game Over -->
+  <div id="game-over-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modal-message">Winner!</h2>
+      <button id="new-game-btn" class="btn primary-btn">New Game</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
 </body>
 </html>
